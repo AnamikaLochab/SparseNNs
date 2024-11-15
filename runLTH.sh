@@ -15,7 +15,7 @@ source ~/myenv/bin/activate
 # Set arguments for script
 DATASET="mnist"
 ARCH="fc1"
-PRUNE_PERCENT=10
+PRUNE_PERCENT=51
 PRUNE_ITERATIONS=35
 BATCH_SIZE=60
 LR=0.0012

@@ -1,0 +1,26 @@
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Current SDK version is 0.18.7
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Configure stats pid to 358781
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Loading settings from /homes/alochab/.config/wandb/settings
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Loading settings from /u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/settings
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Loading settings from environment variables: {}
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Applying setup settings: {'mode': None, '_disable_service': None}
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Inferring run settings from compute environment: {'program_relpath': 'LTH.py', 'program_abspath': '/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py', 'program': '/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py'}
+2024-11-14 21:30:38,178 INFO    MainThread:358781 [wandb_setup.py:_flush():79] Applying login settings: {}
+2024-11-14 21:30:38,179 INFO    MainThread:358781 [wandb_init.py:_log_setup():533] Logging user logs to /u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/run-20241114_213038-wsm0uhim/logs/debug.log
+2024-11-14 21:30:38,179 INFO    MainThread:358781 [wandb_init.py:_log_setup():534] Logging internal logs to /u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/run-20241114_213038-wsm0uhim/logs/debug-internal.log
+2024-11-14 21:30:38,179 INFO    MainThread:358781 [wandb_init.py:init():619] calling init triggers
+2024-11-14 21:30:38,179 INFO    MainThread:358781 [wandb_init.py:init():626] wandb.init called with sweep_config: {}
+config: {'arch': 'fc1', 'learning_rate': 0.0012, 'prune_percent': 10, 'prune_iter': 35}
+2024-11-14 21:30:38,179 INFO    MainThread:358781 [wandb_init.py:init():669] starting backend
+2024-11-14 21:30:38,179 INFO    MainThread:358781 [wandb_init.py:init():673] sending inform_init request
+2024-11-14 21:30:38,182 INFO    MainThread:358781 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-11-14 21:30:38,183 INFO    MainThread:358781 [wandb_init.py:init():686] backend started and connected
+2024-11-14 21:30:38,188 INFO    MainThread:358781 [wandb_init.py:init():781] updated telemetry
+2024-11-14 21:30:38,206 INFO    MainThread:358781 [wandb_init.py:init():814] communicating run to backend with 90.0 second timeout
+2024-11-14 21:30:38,747 INFO    MainThread:358781 [wandb_init.py:init():867] starting run threads in backend
+2024-11-14 21:30:39,108 INFO    MainThread:358781 [wandb_run.py:_console_start():2456] atexit reg
+2024-11-14 21:30:39,109 INFO    MainThread:358781 [wandb_run.py:_redirect():2305] redirect: wrap_raw
+2024-11-14 21:30:39,109 INFO    MainThread:358781 [wandb_run.py:_redirect():2370] Wrapping output streams.
+2024-11-14 21:30:39,109 INFO    MainThread:358781 [wandb_run.py:_redirect():2395] Redirects installed.
+2024-11-14 21:30:39,115 INFO    MainThread:358781 [wandb_init.py:init():911] run started, returning control to user process
+2024-11-14 21:30:39,401 WARNING MsgRouterThr:358781 [router.py:message_loop():75] message_loop has been closed

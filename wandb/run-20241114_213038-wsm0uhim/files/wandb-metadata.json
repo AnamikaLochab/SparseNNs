@@ -1,0 +1,38 @@
+{
+  "os": "Linux-5.15.0-72-generic-x86_64-with-glibc2.35",
+  "python": "3.10.6",
+  "startedAt": "2024-11-15T02:30:38.183905Z",
+  "args": [
+    "--prune_type=lt",
+    "--arch_type=fc1",
+    "--dataset=mnist",
+    "--prune_percent=10",
+    "--prune_iterations=35"
+  ],
+  "program": "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py",
+  "codePath": "LTH.py",
+  "git": {
+    "commit": "5ed2753fe2fa7bc9bbc585ff24054dab6cb4c4d8"
+  },
+  "email": "anamikalochab@gmail.com",
+  "root": "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch",
+  "host": "mc17.cs.purdue.edu",
+  "username": "alochab",
+  "executable": "/homes/alochab/myenv/bin/python3",
+  "codePathLocal": "LTH.py",
+  "cpu_count": 24,
+  "cpu_count_logical": 24,
+  "disk": {
+    "/": {
+      "total": "32066301952",
+      "used": "24795856896"
+    }
+  },
+  "memory": {
+    "total": "25196929024"
+  },
+  "cpu": {
+    "count": 24,
+    "countLogical": 24
+  }
+}
