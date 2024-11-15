@@ -1,0 +1,36 @@
+
+--- Pruning Level [1:0/35]: ---
+classifier.0.weight  | nonzeros =  235200 /  235200 (100.00%) | total_pruned =       0 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   30000 /   30000 (100.00%) | total_pruned =       0 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =    1000 /    1000 (100.00%) | total_pruned =       0 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 266610, pruned : 0, total: 266610, Compression rate :       1.00x  (  0.00% pruned)
+Training Epochs:   0%|                                                                                                                                                                                                       | 0/100 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py", line 343, in <module>
+    main(args, ITE=1)
+  File "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py", line 130, in main
+    accuracy = test(model, test_loader, criterion)
+  File "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py", line 176, in test
+    output = model(data)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/archs/mnist/fc1.py", line 18, in forward
+    x = self.classifier(x)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/homes/alochab/myenv/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+KeyboardInterrupt

@@ -1,0 +1,8 @@
+{"time":"2024-11-14T20:48:14.347305994-05:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-14T20:48:14.347360653-05:00","level":"INFO","msg":"created symlink","path":"/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/run-20241114_204814-ioipd3p0/logs/debug-core.log"}
+{"time":"2024-11-14T20:48:14.47327085-05:00","level":"INFO","msg":"created new stream","id":"ioipd3p0"}
+{"time":"2024-11-14T20:48:14.473309709-05:00","level":"INFO","msg":"stream: started","id":"ioipd3p0"}
+{"time":"2024-11-14T20:48:14.474642308-05:00","level":"INFO","msg":"writer: Do: started","stream_id":"ioipd3p0"}
+{"time":"2024-11-14T20:48:14.475238767-05:00","level":"INFO","msg":"handler: started","stream_id":"ioipd3p0"}
+{"time":"2024-11-14T20:48:14.475267789-05:00","level":"INFO","msg":"sender: started","stream_id":"ioipd3p0"}
+{"time":"2024-11-14T20:48:14.878137653-05:00","level":"INFO","msg":"Starting system monitor"}

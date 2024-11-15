@@ -1,0 +1,16 @@
+{"time":"2024-11-14T20:10:37.719927657-05:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-14T20:10:37.720009208-05:00","level":"INFO","msg":"created symlink","path":"/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/run-20241114_201037-ilu4885m/logs/debug-core.log"}
+{"time":"2024-11-14T20:10:37.853674918-05:00","level":"INFO","msg":"created new stream","id":"ilu4885m"}
+{"time":"2024-11-14T20:10:37.853781627-05:00","level":"INFO","msg":"stream: started","id":"ilu4885m"}
+{"time":"2024-11-14T20:10:37.85403791-05:00","level":"INFO","msg":"handler: started","stream_id":"ilu4885m"}
+{"time":"2024-11-14T20:10:37.854039264-05:00","level":"INFO","msg":"writer: Do: started","stream_id":"ilu4885m"}
+{"time":"2024-11-14T20:10:37.854136969-05:00","level":"INFO","msg":"sender: started","stream_id":"ilu4885m"}
+{"time":"2024-11-14T20:10:38.328964569-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-14T20:14:22.240779397-05:00","level":"INFO","msg":"stream: closing","id":"ilu4885m"}
+{"time":"2024-11-14T20:14:22.24096936-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-14T20:14:22.256297115-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-14T20:14:23.383496821-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-14T20:14:23.534300898-05:00","level":"INFO","msg":"handler: closed","stream_id":"ilu4885m"}
+{"time":"2024-11-14T20:14:23.53438226-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ilu4885m"}
+{"time":"2024-11-14T20:14:23.535510278-05:00","level":"INFO","msg":"sender: closed","stream_id":"ilu4885m"}
+{"time":"2024-11-14T20:14:23.606034106-05:00","level":"INFO","msg":"stream: closed","id":"ilu4885m"}
