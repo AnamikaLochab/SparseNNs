@@ -7,4 +7,4 @@ classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =  
 classifier.4.weight  | nonzeros =    1000 /    1000 (100.00%) | total_pruned =       0 | shape = (10, 100)
 classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
 alive: 266610, pruned : 0, total: 266610, Compression rate :       1.00x  (  0.00% pruned)
-Training Epochs:   0%|                                  | 0/100 [00:00<?, ?it/s]
+Training Epochs:  12%|██▋                   | 12/100 [56:56<7:33:50, 309.44s/it]
