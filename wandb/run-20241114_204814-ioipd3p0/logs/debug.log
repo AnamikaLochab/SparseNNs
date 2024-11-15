@@ -23,3 +23,10 @@ config: {'learning_rate': 0.0012}
 2024-11-14 20:48:15,129 INFO    MainThread:2295265 [wandb_run.py:_redirect():2370] Wrapping output streams.
 2024-11-14 20:48:15,130 INFO    MainThread:2295265 [wandb_run.py:_redirect():2395] Redirects installed.
 2024-11-14 20:48:15,137 INFO    MainThread:2295265 [wandb_init.py:init():911] run started, returning control to user process
+2024-11-15 13:41:23,778 INFO    MainThread:2295265 [wandb_run.py:_finish():2155] finishing run anamikalochab-rutgers-university/pruning_project/ioipd3p0
+2024-11-15 13:41:23,779 INFO    MainThread:2295265 [wandb_run.py:_atexit_cleanup():2420] got exitcode: 0
+2024-11-15 13:41:23,780 INFO    MainThread:2295265 [wandb_run.py:_restore():2402] restore
+2024-11-15 13:41:23,780 INFO    MainThread:2295265 [wandb_run.py:_restore():2408] restore done
+2024-11-15 13:41:26,048 INFO    MainThread:2295265 [wandb_run.py:_footer_history_summary_info():3960] rendering history
+2024-11-15 13:41:26,049 INFO    MainThread:2295265 [wandb_run.py:_footer_history_summary_info():3992] rendering summary
+2024-11-15 13:41:26,066 INFO    MainThread:2295265 [wandb_run.py:_footer_sync_info():3921] logging synced files

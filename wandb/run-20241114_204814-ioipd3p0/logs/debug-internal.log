@@ -6,3 +6,18 @@
 {"time":"2024-11-14T20:48:14.475238767-05:00","level":"INFO","msg":"handler: started","stream_id":"ioipd3p0"}
 {"time":"2024-11-14T20:48:14.475267789-05:00","level":"INFO","msg":"sender: started","stream_id":"ioipd3p0"}
 {"time":"2024-11-14T20:48:14.878137653-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-14T21:56:10.426058318-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/ioipd3p0/file_stream\": EOF"}
+{"time":"2024-11-14T22:38:10.415289352-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/ioipd3p0/file_stream\": EOF"}
+{"time":"2024-11-15T00:24:25.439749763-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/ioipd3p0/file_stream\": EOF"}
+{"time":"2024-11-15T02:50:10.449425661-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/ioipd3p0/file_stream\": EOF"}
+{"time":"2024-11-15T05:44:25.422160664-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/ioipd3p0/file_stream\": EOF"}
+{"time":"2024-11-15T06:48:55.418130526-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/ioipd3p0/file_stream\": EOF"}
+{"time":"2024-11-15T13:41:23.780620798-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-15T13:41:23.781458513-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-15T13:41:24.781322513-05:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.828369936}],"total_operations":1}}
+{"time":"2024-11-15T13:41:24.957704239-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-15T13:41:26.069971706-05:00","level":"INFO","msg":"stream: closing","id":"ioipd3p0"}
+{"time":"2024-11-15T13:41:26.070012171-05:00","level":"INFO","msg":"handler: closed","stream_id":"ioipd3p0"}
+{"time":"2024-11-15T13:41:26.070028779-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ioipd3p0"}
+{"time":"2024-11-15T13:41:26.070120894-05:00","level":"INFO","msg":"sender: closed","stream_id":"ioipd3p0"}
+{"time":"2024-11-15T13:41:26.073166655-05:00","level":"INFO","msg":"stream: closed","id":"ioipd3p0"}

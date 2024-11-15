@@ -23,3 +23,10 @@ config: {'arch': 'fc1', 'learning_rate': 0.0012, 'prune_percent': 51, 'prune_ite
 2024-11-14 21:38:34,473 INFO    MainThread:2310047 [wandb_run.py:_redirect():2370] Wrapping output streams.
 2024-11-14 21:38:34,473 INFO    MainThread:2310047 [wandb_run.py:_redirect():2395] Redirects installed.
 2024-11-14 21:38:34,477 INFO    MainThread:2310047 [wandb_init.py:init():911] run started, returning control to user process
+2024-11-15 13:55:25,930 INFO    MainThread:2310047 [wandb_run.py:_finish():2155] finishing run anamikalochab-rutgers-university/pruning_project/13h0kghs
+2024-11-15 13:55:25,931 INFO    MainThread:2310047 [wandb_run.py:_atexit_cleanup():2420] got exitcode: 0
+2024-11-15 13:55:25,932 INFO    MainThread:2310047 [wandb_run.py:_restore():2402] restore
+2024-11-15 13:55:25,932 INFO    MainThread:2310047 [wandb_run.py:_restore():2408] restore done
+2024-11-15 13:55:28,106 INFO    MainThread:2310047 [wandb_run.py:_footer_history_summary_info():3960] rendering history
+2024-11-15 13:55:28,106 INFO    MainThread:2310047 [wandb_run.py:_footer_history_summary_info():3992] rendering summary
+2024-11-15 13:55:28,155 INFO    MainThread:2310047 [wandb_run.py:_footer_sync_info():3921] logging synced files

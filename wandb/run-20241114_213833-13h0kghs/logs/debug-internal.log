@@ -6,3 +6,20 @@
 {"time":"2024-11-14T21:38:34.100507691-05:00","level":"INFO","msg":"handler: started","stream_id":"13h0kghs"}
 {"time":"2024-11-14T21:38:34.100550119-05:00","level":"INFO","msg":"sender: started","stream_id":"13h0kghs"}
 {"time":"2024-11-14T21:38:34.348822179-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-14T23:25:49.697225838-05:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/13h0kghs/file_stream"}
+{"time":"2024-11-14T23:26:52.046389695-05:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/13h0kghs/file_stream"}
+{"time":"2024-11-15T02:38:59.399886903-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/13h0kghs/file_stream\": EOF"}
+{"time":"2024-11-15T04:17:14.425029638-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/13h0kghs/file_stream\": EOF"}
+{"time":"2024-11-15T04:49:29.454735207-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/13h0kghs/file_stream\": EOF"}
+{"time":"2024-11-15T13:55:25.972392587-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-15T13:55:25.973669561-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-15T13:55:26.79491179-05:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-15T13:55:26.794935471-05:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-15T13:55:26.794945381-05:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-15T13:55:26.933717596-05:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.055234736,"progress":"611B/611B"},{"desc":"uploading output.log","runtime_seconds":0.055222518,"progress":"29.0KB/29.0KB"}],"total_operations":2}}
+{"time":"2024-11-15T13:55:27.003716555-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-15T13:55:28.200700275-05:00","level":"INFO","msg":"stream: closing","id":"13h0kghs"}
+{"time":"2024-11-15T13:55:28.200776976-05:00","level":"INFO","msg":"handler: closed","stream_id":"13h0kghs"}
+{"time":"2024-11-15T13:55:28.200851876-05:00","level":"INFO","msg":"sender: closed","stream_id":"13h0kghs"}
+{"time":"2024-11-15T13:55:28.200802211-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"13h0kghs"}
+{"time":"2024-11-15T13:55:28.202113223-05:00","level":"INFO","msg":"stream: closed","id":"13h0kghs"}
