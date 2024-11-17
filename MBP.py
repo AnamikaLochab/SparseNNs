@@ -28,62 +28,62 @@ import utils
 # # Plotting Style
 # sns.set_style('darkgrid')
 # wandb.init(project="pruning_project", config={"arch":args.arch_type, "learning_rate": args.lr, "prune_percent":args.prune_percent, "prune_iter": args.prune_iterations})
-# Main
+# Updated Training Loop with New Features
 def main(args, ITE=0):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Data Loader
-    transform=transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.1307,), (0.3081,))])
+    # Data Loader with Dynamic Dataset Support
     if args.dataset == "mnist":
-        traindataset = datasets.MNIST('../data', train=True, download=True,transform=transform)
+        transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
+        traindataset = datasets.MNIST('../data', train=True, download=True, transform=transform)
         testdataset = datasets.MNIST('../data', train=False, transform=transform)
         from archs.mnist import AlexNet, LeNet5, fc1, vgg, resnet
 
     elif args.dataset == "cifar10":
-        traindataset = datasets.CIFAR10('../data', train=True, download=True,transform=transform)
-        testdataset = datasets.CIFAR10('../data', train=False, transform=transform)      
-        from archs.cifar10 import AlexNet, LeNet5, fc1, vgg, resnet, densenet 
+        transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
+        traindataset = datasets.CIFAR10('../data', train=True, download=True, transform=transform)
+        testdataset = datasets.CIFAR10('../data', train=False, transform=transform)
+        from archs.cifar10 import AlexNet, LeNet5, fc1, vgg, resnet, densenet
 
     elif args.dataset == "fashionmnist":
-        traindataset = datasets.FashionMNIST('../data', train=True, download=True,transform=transform)
+        transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
+        traindataset = datasets.FashionMNIST('../data', train=True, download=True, transform=transform)
         testdataset = datasets.FashionMNIST('../data', train=False, transform=transform)
-        from archs.mnist import AlexNet, LeNet5, fc1, vgg, resnet 
+        from archs.mnist import AlexNet, LeNet5, fc1, vgg, resnet
 
     elif args.dataset == "cifar100":
-        traindataset = datasets.CIFAR100('../data', train=True, download=True,transform=transform)
-        testdataset = datasets.CIFAR100('../data', train=False, transform=transform)   
-        from archs.cifar100 import AlexNet, fc1, LeNet5, vgg, resnet  
-    
-    else:
-        print("\nWrong Dataset choice \n")
-        exit()
+        transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
+        traindataset = datasets.CIFAR100('../data', train=True, download=True, transform=transform)
+        testdataset = datasets.CIFAR100('../data', train=False, transform=transform)
+        from archs.cifar100 import AlexNet, fc1, LeNet5, vgg, resnet
 
-    train_loader = torch.utils.data.DataLoader(traindataset, batch_size=args.batch_size, shuffle=True, num_workers=0,drop_last=False)
-    test_loader = torch.utils.data.DataLoader(testdataset, batch_size=args.batch_size, shuffle=False, num_workers=0,drop_last=True)
+    else:
+        raise ValueError(f"Dataset {args.dataset} is not supported.")
     
-    # Importing Network Architecture
+    train_loader = torch.utils.data.DataLoader(traindataset, batch_size=args.batch_size, shuffle=True)
+    test_loader = torch.utils.data.DataLoader(testdataset, batch_size=args.batch_size, shuffle=False)
+
+    # Importing Network Architecture Dynamically
     global model
     if args.arch_type == "fc1":
-       model = fc1.fc1().to(device)
+        model = fc1.fc1().to(device)
     elif args.arch_type == "lenet5":
         model = LeNet5.LeNet5().to(device)
     elif args.arch_type == "alexnet":
         model = AlexNet.AlexNet().to(device)
-    elif args.arch_type == "vgg16":
-        model = vgg.vgg16().to(device)  
-    elif args.arch_type == "resnet18":
-        model = resnet.resnet18().to(device)   
-    elif args.arch_type == "densenet121":
-        model = densenet.densenet121().to(device)   
-    
+    elif args.arch_type == "vgg":
+        model = vgg.VGG().to(device)
+    elif args.arch_type == "resnet":
+        model = resnet.ResNet().to(device)
+    elif args.arch_type == "densenet" and args.dataset == "cifar10":
+        model = densenet.DenseNet().to(device)
     else:
-        print("\nWrong Model choice\n")
-        exit()
+        raise ValueError(f"Architecture {args.arch_type} is not supported for {args.dataset}.")
 
     # Weight Initialization
     model.apply(weight_init)
 
-    # Copying and Saving Initial State
+    # Copy and Save Initial State
     initial_state_dict = copy.deepcopy(model.state_dict())
     utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
     torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/initial_state_dict_{args.prune_type}.pth.tar")
@@ -95,19 +95,21 @@ def main(args, ITE=0):
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
     criterion = nn.CrossEntropyLoss()
 
-    # Pruning Loop
+    # Iterative Pruning Loop
     best_accuracy = 0
     comp, bestacc = np.zeros(args.prune_iterations, float), np.zeros(args.prune_iterations, float)
 
     for _ite in range(args.start_iter, args.prune_iterations):
         if _ite != 0:
             magnitude_prune_by_percentile(args.prune_percent)
+            prune_dead_neurons(model)  # Prune dead neurons
+            adjust_dropout(model, args.prune_percent / 100)  # Adjust dropout rates
             optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
         print(f"\n--- Pruning Level [{ITE}:{_ite}/{args.prune_iterations}]: ---")
 
         # Track compression
         comp[_ite] = utils.print_nonzeros(model)
-        
+
         for iter_ in tqdm(range(args.end_iter), desc="Training Epochs"):
             # Validation and Model Saving
             if iter_ % args.valid_freq == 0:
@@ -118,13 +120,47 @@ def main(args, ITE=0):
                     torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/{_ite}_model_{args.prune_type}.pth.tar")
                 wandb.log({"Accuracy/test": accuracy, "Best Accuracy": best_accuracy, "Compression": comp[_ite]})
 
-            # Training
-            train_loss = train(model, train_loader, optimizer, criterion)
+            # Training with L2 Regularization
+            train_loss = train_with_l2(model, train_loader, optimizer, criterion, lambda_l2=1e-4)
             wandb.log({"Train Loss": train_loss})
 
     wandb.finish()
-                           
 
+# Function to apply L2 regularization during training
+def apply_l2_regularization(optimizer, lambda_l2=1e-4):
+    """
+    Applies L2 regularization to the optimizer by adding the L2 penalty to the gradients.
+    """
+    for group in optimizer.param_groups:
+        for param in group['params']:
+            if param.requires_grad:
+                param.grad.data.add_(lambda_l2 * param.data)         
+
+# Function for Training with L2 Regularization
+def train_with_l2(model, train_loader, optimizer, criterion, lambda_l2=1e-4):
+    EPS = 1e-6
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.train()
+    for batch_idx, (imgs, targets) in enumerate(train_loader):
+        optimizer.zero_grad()
+        imgs, targets = imgs.to(device), targets.to(device)
+        output = model(imgs)
+        train_loss = criterion(output, targets)
+        train_loss.backward()
+
+        # Apply L2 regularization
+        apply_l2_regularization(optimizer, lambda_l2)
+
+        # Freezing Pruned weights by making their gradients Zero
+        for name, p in model.named_parameters():
+            if 'weight' in name:
+                tensor = p.data.cpu().numpy()
+                grad_tensor = p.grad.data.cpu().numpy()
+                grad_tensor = np.where(tensor < EPS, 0, grad_tensor)
+                p.grad.data = torch.from_numpy(grad_tensor).to(device)
+        optimizer.step()
+    return train_loss.item()
+ 
 # Function for Training
 def train(model, train_loader, optimizer, criterion):
     EPS = 1e-6
@@ -146,6 +182,36 @@ def train(model, train_loader, optimizer, criterion):
                 p.grad.data = torch.from_numpy(grad_tensor).to(device)
         optimizer.step()
     return train_loss.item()
+
+# Function to adjust Dropout after Pruning
+def adjust_dropout(model, prune_ratio):
+    """
+    Adjusts dropout rates based on pruning ratio.
+    Dropout rates are reduced proportionally to preserve model capacity.
+    """
+    for m in model.modules():
+        if isinstance(m, nn.Dropout):
+            original_p = m.p
+            m.p = max(0, original_p * (1 - prune_ratio))  # Reduce dropout rate
+            print(f"Adjusted Dropout: {original_p} -> {m.p}")
+
+# Function to prune neurons with zero input/output connections
+def prune_dead_neurons(model):
+    """
+    Prunes neurons that have zero input or zero output connections.
+    """
+    for name, module in model.named_modules():
+        if isinstance(module, nn.Linear):
+            # Check for dead input neurons (all weights to this neuron are zero)
+            weight_matrix = module.weight.data.cpu().numpy()
+            dead_inputs = np.all(weight_matrix == 0, axis=0)
+            if np.any(dead_inputs):
+                print(f"Pruning {np.sum(dead_inputs)} dead input neurons in {name}")
+
+            # Check for dead output neurons (all weights from this neuron are zero)
+            dead_outputs = np.all(weight_matrix == 0, axis=1)
+            if np.any(dead_outputs):
+                print(f"Pruning {np.sum(dead_outputs)} dead output neurons in {name}")
 
 # Function for Testing
 def test(model, test_loader, criterion):
@@ -237,8 +303,11 @@ if __name__=="__main__":
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--prune_type", default="magnitude", type=str, help="lt | reinit | magnitude")
     parser.add_argument("--gpu", default="0", type=str)
-    parser.add_argument("--dataset", default="mnist", type=str, help="mnist | cifar10 | fashionmnist | cifar100")
-    parser.add_argument("--arch_type", default="fc1", type=str, help="fc1 | lenet5 | alexnet | vgg16 | resnet18 | densenet121")
+    parser.add_argument("--dataset", default="mnist", type=str, choices=["mnist", "cifar10", "fashionmnist", "cifar100"],
+                    help="Dataset to use: mnist | cifar10 | fashionmnist | cifar100")
+    parser.add_argument("--arch_type", default="fc1", type=str, 
+                    choices=["fc1", "lenet5", "alexnet", "vgg", "resnet", "densenet"],
+                    help="Architecture to use: fc1 | lenet5 | alexnet | vgg | resnet | densenet")
     parser.add_argument("--prune_percent", default=10, type=int, help="Pruning percent")
     parser.add_argument("--prune_iterations", default=35, type=int, help="Pruning iterations count")
 
