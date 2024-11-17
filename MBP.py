@@ -30,7 +30,10 @@ import utils
 # wandb.init(project="pruning_project", config={"arch":args.arch_type, "learning_rate": args.lr, "prune_percent":args.prune_percent, "prune_iter": args.prune_iterations})
 # Updated Training Loop with New Features
 def main(args, ITE=0):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Data Loader with Dynamic Dataset Support
     if args.dataset == "mnist":
@@ -139,7 +142,10 @@ def apply_l2_regularization(optimizer, lambda_l2=1e-4):
 # Function for Training with L2 Regularization
 def train_with_l2(model, train_loader, optimizer, criterion, lambda_l2=1e-4):
     EPS = 1e-6
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.train()
     for batch_idx, (imgs, targets) in enumerate(train_loader):
         optimizer.zero_grad()
@@ -164,7 +170,10 @@ def train_with_l2(model, train_loader, optimizer, criterion, lambda_l2=1e-4):
 # Function for Training
 def train(model, train_loader, optimizer, criterion):
     EPS = 1e-6
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.train()
     for batch_idx, (imgs, targets) in enumerate(train_loader):
         optimizer.zero_grad()
@@ -215,7 +224,10 @@ def prune_dead_neurons(model):
 
 # Function for Testing
 def test(model, test_loader, criterion):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.eval()
     test_loss = 0
     correct = 0
