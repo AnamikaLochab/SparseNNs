@@ -6,3 +6,15 @@
 {"time":"2024-11-15T14:56:16.770197693-05:00","level":"INFO","msg":"sender: started","stream_id":"37h0smqt"}
 {"time":"2024-11-15T14:56:16.770282258-05:00","level":"INFO","msg":"writer: Do: started","stream_id":"37h0smqt"}
 {"time":"2024-11-15T14:56:17.077831445-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-15T21:49:36.158987118-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-15T21:49:36.161769577-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-15T21:49:36.287652262-05:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-15T21:49:36.28770266-05:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-15T21:49:36.287713954-05:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-15T21:49:36.515799647-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-15T21:49:36.61799059-05:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2024-11-15T21:49:37.775778234-05:00","level":"INFO","msg":"stream: closing","id":"37h0smqt"}
+{"time":"2024-11-15T21:49:37.775885373-05:00","level":"INFO","msg":"handler: closed","stream_id":"37h0smqt"}
+{"time":"2024-11-15T21:49:37.775916777-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"37h0smqt"}
+{"time":"2024-11-15T21:49:37.776134106-05:00","level":"INFO","msg":"sender: closed","stream_id":"37h0smqt"}
+{"time":"2024-11-15T21:49:37.779375639-05:00","level":"INFO","msg":"stream: closed","id":"37h0smqt"}

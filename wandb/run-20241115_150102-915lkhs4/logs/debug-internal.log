@@ -6,3 +6,17 @@
 {"time":"2024-11-15T15:01:03.008065836-05:00","level":"INFO","msg":"sender: started","stream_id":"915lkhs4"}
 {"time":"2024-11-15T15:01:03.008115835-05:00","level":"INFO","msg":"handler: started","stream_id":"915lkhs4"}
 {"time":"2024-11-15T15:01:03.305161824-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-15T19:10:43.60899459-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/915lkhs4/file_stream\": EOF"}
+{"time":"2024-11-15T19:23:43.628838762-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/915lkhs4/file_stream\": EOF"}
+{"time":"2024-11-15T23:17:58.603944642-05:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/anamikalochab-rutgers-university/pruning_project/915lkhs4/file_stream\": EOF"}
+{"time":"2024-11-15T23:27:29.409108913-05:00","level":"INFO","msg":"stream: closing","id":"915lkhs4"}
+{"time":"2024-11-15T23:27:29.409240076-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-15T23:27:29.410872621-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-15T23:27:29.502550375-05:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-15T23:27:29.502605924-05:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-15T23:27:29.502617522-05:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-15T23:27:29.776443006-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-15T23:27:29.898835052-05:00","level":"INFO","msg":"handler: closed","stream_id":"915lkhs4"}
+{"time":"2024-11-15T23:27:29.89898026-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"915lkhs4"}
+{"time":"2024-11-15T23:27:29.899223452-05:00","level":"INFO","msg":"sender: closed","stream_id":"915lkhs4"}
+{"time":"2024-11-15T23:27:29.974776168-05:00","level":"INFO","msg":"stream: closed","id":"915lkhs4"}
