@@ -1,0 +1,9 @@
+
+--- Pruning Level [1:0/0]: ---
+classifier.0.weight  | nonzeros =    5581 /  235200 (  2.37%) | total_pruned =  229619 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    4694 /   30000 ( 15.65%) | total_pruned =   25306 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     374 /    1000 ( 37.40%) | total_pruned =     626 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 11059, pruned : 255551, total: 266610, Compression rate :      24.11x  ( 95.85% pruned)

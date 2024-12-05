@@ -21,7 +21,7 @@ import pickle
 import wandb
 # Custom Libraries
 import utils
-
+import random
 # # Tensorboard initialization
 # writer = SummaryWriter()
 
@@ -89,8 +89,8 @@ def main(args, ITE=0):
 
     # Copying and Saving Initial State
     initial_state_dict = copy.deepcopy(model.state_dict())
-    utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
-    torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/initial_state_dict_{args.prune_type}.pth.tar")
+    # utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
+    # torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/initial_state_dict_{args.prune_type}.pth.tar")
 
     # Making Initial Mask
     make_mask(model)
@@ -111,12 +111,20 @@ def main(args, ITE=0):
     # Pruning Loop
     best_accuracy = 0
     comp, bestacc = np.zeros(args.prune_iterations, float), np.zeros(args.prune_iterations, float)
+    sparsity = args.prune_percent / 100  # Convert to fraction
+    n = args.prune_iterations-1
+    r = sparsity ** (1 / n)  # Per-iteration remaining fraction
+    per_iteration_prune_percent = (1 - r) * 100  # Convert back to percentage
 
     for _ite in range(args.start_iter, args.prune_iterations):
         if _ite != 0:
-            prune_by_percentile(args.prune_percent, resample=False, reinit=reinit)
+            if args.arch_type == "fc1":
+                prune_by_percentile(per_iteration_prune_percent, resample=False, reinit=reinit)
+            else: 
+                prune_by_global_percentile(per_iteration_prune_percent)
             if reinit:
                 model.apply(weight_init)
+            else:
                 original_initialization(mask, initial_state_dict)
             optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
         print(f"\n--- Pruning Level [{ITE}:{_ite}/{args.prune_iterations}]: ---")
@@ -126,17 +134,25 @@ def main(args, ITE=0):
         
         for iter_ in tqdm(range(args.end_iter), desc="Training Epochs"):
             # Validation and Model Saving
+            metrics = {}
             if iter_ % args.valid_freq == 0:
                 accuracy = test(model, test_loader, criterion)
-                if accuracy > best_accuracy:
-                    best_accuracy = accuracy
-                    utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
-                    torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/{_ite}_model_{args.prune_type}.pth.tar")
-                wandb.log({"Accuracy/test": accuracy, "Best Accuracy": best_accuracy, "Compression": comp[_ite]})
-
+                # if accuracy > best_accuracy:
+                #     best_accuracy = accuracy
+                #     utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
+                #     torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/{_ite}_model_{args.prune_type}.pth.tar")
+                # wandb.log({"Accuracy/test": accuracy, "Best Accuracy": best_accuracy, "Compression": comp[_ite]})
+            if _ite !=0:
+                    metrics.update({
+                "Accuracy/test": accuracy,
+                "Best Accuracy": best_accuracy,
+                "Compression": comp[_ite]})
             # Training
             train_loss = train(model, train_loader, optimizer, criterion)
-            wandb.log({"Train Loss": train_loss})
+            if _ite !=0:
+                metrics["Train Loss"] = train_loss
+                # print(_ite, iter_)
+                wandb.log(metrics)
 
     wandb.finish()
                           
@@ -189,13 +205,15 @@ def prune_by_percentile(percent, resample=False, reinit=False,**kwargs):
 
         # Calculate percentile value
         step = 0
+        prune_rates = {'classifier.4.weight': 0.5, 'default': 1}
         for name, param in model.named_parameters():
-
+            print(name)
             # We do not prune bias term
             if 'weight' in name:
+                prune_rate = prune_rates['classifier.4.weight'] if 'classifier.4.weight' in name else prune_rates['default']
                 tensor = param.data.cpu().numpy()
                 alive = tensor[np.nonzero(tensor)] # flattened array of nonzero values
-                percentile_value = np.percentile(abs(alive), percent)
+                percentile_value = np.percentile(abs(alive), percent*prune_rate)
 
                 # Convert Tensors to numpy and calculate
                 weight_dev = param.device
@@ -206,7 +224,36 @@ def prune_by_percentile(percent, resample=False, reinit=False,**kwargs):
                 mask[step] = new_mask
                 step += 1
         step = 0
+def prune_by_global_percentile(percent):
+    # Collect all weights in a list
+    global step
+    global mask
+    global model
 
+    all_weights = []
+    for name, param in model.named_parameters():
+        if 'conv' in name and 'weight' in name:  # Assuming you're only pruning convolutional layers
+            tensor = param.data.cpu().numpy()
+            alive = tensor[np.nonzero(tensor)]
+            all_weights.extend(abs(alive))
+    
+    # Calculate global percentile value
+    global_percentile_value = np.percentile(all_weights, percent)
+
+    # Apply pruning based on global percentile value
+    step = 0
+    for name, param in model.named_parameters():
+        if 'conv' in name and 'weight' in name:
+            tensor = param.data.cpu().numpy()
+            weight_dev = param.device
+            new_mask = np.where(abs(tensor) < global_percentile_value, 0, mask_dict[step])
+            
+            # Apply new weight and mask
+            param.data = torch.from_numpy(tensor * new_mask).to(weight_dev)
+            mask_dict[step] = new_mask
+            step += 1
+    step = 0
+    
 # Function to make an empty mask of the same size as the model
 def make_mask(model):
     global step
@@ -310,13 +357,19 @@ if __name__=="__main__":
     
     #from gooey import Gooey
     #@Gooey      
-    
+    random.seed(42)
+    np.random.seed(42)
+    torch.manual_seed(42)
+
+    # If you are using CUDA to run your PyTorch code, set this too:
+    torch.cuda.manual_seed(42)
+    torch.cuda.manual_seed_all(42)
     # Arguement Parser
     parser = argparse.ArgumentParser()
     parser.add_argument("--lr",default= 1.2e-3, type=float, help="Learning rate")
     parser.add_argument("--batch_size", default=60, type=int)
     parser.add_argument("--start_iter", default=0, type=int)
-    parser.add_argument("--end_iter", default=100, type=int)
+    parser.add_argument("--end_iter", default=10, type=int)
     parser.add_argument("--print_freq", default=1, type=int)
     parser.add_argument("--valid_freq", default=1, type=int)
     parser.add_argument("--resume", action="store_true")
@@ -325,11 +378,11 @@ if __name__=="__main__":
     parser.add_argument("--dataset", default="mnist", type=str, help="mnist | cifar10 | fashionmnist | cifar100")
     parser.add_argument("--arch_type", default="fc1", type=str, help="fc1 | lenet5 | alexnet | vgg16 | resnet18 | densenet121")
     parser.add_argument("--prune_percent", default=10, type=int, help="Pruning percent")
-    parser.add_argument("--prune_iterations", default=35, type=int, help="Pruning iterations count")
+    parser.add_argument("--prune_iterations", default=3, type=int, help="Pruning iterations count")
 
     
     args = parser.parse_args()
-    wandb.init(project="pruning_project", config={"arch":args.arch_type, "learning_rate": args.lr, "prune_percent":args.prune_percent, "prune_iter": args.prune_iterations})
+    wandb.init(project="pruning_project", config={"arch":args.arch_type, "init":"correct" ,"dataset":args.dataset, "learning_rate": args.lr, "prune_percent":args.prune_percent, "end_iter":args.end_iter, "prune_iter": args.prune_iterations, "train_iter": args.end_iter, "prune_type": args.prune_type})
 
 
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   

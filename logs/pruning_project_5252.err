@@ -1,0 +1,7 @@
+usage: LTH.py [-h] [--lr LR] [--batch_size BATCH_SIZE]
+              [--start_iter START_ITER] [--end_iter END_ITER]
+              [--print_freq PRINT_FREQ] [--valid_freq VALID_FREQ] [--resume]
+              [--prune_type PRUNE_TYPE] [--gpu GPU] [--dataset DATASET]
+              [--arch_type ARCH_TYPE] [--prune_percent PRUNE_PERCENT]
+              [--prune_iterations PRUNE_ITERATIONS]
+LTH.py: error: argument --prune_percent: invalid int value: '0.4'

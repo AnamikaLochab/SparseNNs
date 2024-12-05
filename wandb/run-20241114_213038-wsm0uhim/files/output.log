@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py", line 344, in <module>
-    main(args, ITE=1)
-  File "/u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/LTH.py", line 41, in main
-    from archs.mnist import AlexNet, LeNet5, fc1, vgg, resnet
-ImportError: cannot import name 'AlexNet' from 'archs.mnist' (unknown location)

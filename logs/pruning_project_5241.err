@@ -1,0 +1,9 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: anamikalochab (anamikalochab-rutgers-university). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.18.7
+wandb: Run data is saved locally in /u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/run-20241121_140518-sq9xifqu
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run worthy-deluge-98
+wandb: ⭐️ View project at https://wandb.ai/anamikalochab-rutgers-university/pruning_project
+wandb: 🚀 View run at https://wandb.ai/anamikalochab-rutgers-university/pruning_project/runs/sq9xifqu
+Training Epochs:   0%|          | 0/100 [00:00<?, ?it/s]Training Epochs:   1%|          | 1/100 [00:19<31:38, 19.18s/it]Training Epochs:   2%|▏         | 2/100 [00:37<30:34, 18.72s/it]Training Epochs:   3%|▎         | 3/100 [00:55<29:59, 18.55s/it]slurmstepd: error: *** JOB 5241 ON gorman2 CANCELLED AT 2024-11-21T14:06:19 ***

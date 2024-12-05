@@ -68,25 +68,34 @@ def main(args, ITE=0):
     # Optimizer and Loss
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
     criterion = nn.CrossEntropyLoss()
-
+    comp = 100
     # Perform SNIP Pruning before training
     snip_prune(model, train_loader, criterion, args.prune_percent, device)
-
+    print(f"\n--- Pruning Level [{ITE}:{0}/{args.prune_iterations}]: ---")
+    comp = utils.print_nonzeros(model)
     # Training Loop
     best_accuracy = 0
     for iter_ in tqdm(range(args.end_iter), desc="Training Epochs"):
         # Validation and Model Saving
+        metrics = {}
         if iter_ % args.valid_freq == 0:
             accuracy = test(model, test_loader, criterion)
             if accuracy > best_accuracy:
                 best_accuracy = accuracy
-                utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
-                torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/{iter_}_model_snip.pth.tar")
-            wandb.log({"Accuracy/test": accuracy, "Best Accuracy": best_accuracy})
+                # utils.checkdir(f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/")
+                # torch.save(model, f"{os.getcwd()}/saves/{args.arch_type}/{args.dataset}/{iter_}_model_snip.pth.tar")
+            # wandb.log({"Accuracy/test": accuracy, "Best Accuracy": best_accuracy})
+            metrics.update({
+        "Accuracy/test": accuracy,
+        "Best Accuracy": best_accuracy,
+        "Compression": comp})
 
         # Training
         train_loss = train(model, train_loader, optimizer, criterion)
-        wandb.log({"Train Loss": train_loss})
+        # wandb.log({"Train Loss": train_loss})
+        metrics["Train Loss"] = train_loss
+            # print(_ite, iter_)
+        wandb.log(metrics)
 
     wandb.finish()
                            
@@ -118,7 +127,11 @@ def test(model, test_loader, criterion):
     return accuracy
 
 # SNIP Pruning Function
+# SNIP Pruning Function
 def snip_prune(model, train_loader, criterion, prune_percent, device):
+    global mask  # Ensure masks is accessible globally
+    mask = {}    # Initialize masks dictionary
+
     model.zero_grad()
     inputs, targets = next(iter(train_loader))
     inputs, targets = inputs.to(device), targets.to(device)
@@ -126,20 +139,35 @@ def snip_prune(model, train_loader, criterion, prune_percent, device):
     loss = criterion(output, targets)
     loss.backward()
 
-    all_scores = []
+    # Compute the total sum of absolute gradients
+    grad_abs_sum = 0.0
     for name, param in model.named_parameters():
-        if 'weight' in name:
-            all_scores.append(torch.abs(param.grad))
-    all_scores = torch.cat([torch.flatten(x) for x in all_scores])
-    num_params_to_keep = int(len(all_scores) * (100 - prune_percent) / 100)
-    threshold, _ = torch.topk(all_scores, num_params_to_keep, sorted=True)
-    acceptable_score = threshold[-1]
+        if param.requires_grad and 'weight' in name and param.grad is not None:
+            grad_abs_sum += param.grad.abs().sum().item()
 
-    # Prune the weights below the threshold
+    # Compute sensitivity scores
+    sensitivity_scores = {}
     for name, param in model.named_parameters():
-        if 'weight' in name:
-            mask = (torch.abs(param.grad) >= acceptable_score).float()
-            param.data *= mask
+        if param.requires_grad and 'weight' in name and param.grad is not None:
+            sensitivity_scores[name] = (param.grad.abs() / grad_abs_sum).detach()
+
+    # Flatten all scores and sort
+    all_scores = torch.cat([torch.flatten(s) for s in sensitivity_scores.values()])
+    num_params = all_scores.numel()
+    kappa = int(num_params * (prune_percent / 100))
+    sorted_scores, _ = torch.sort(all_scores, descending=True)
+
+    # Determine the threshold sensitivity score
+    s_kappa = sorted_scores[kappa] if kappa < num_params else sorted_scores[-1]
+
+    # Create masks and prune weights
+    with torch.no_grad():
+        for name, param in model.named_parameters():
+            if name in sensitivity_scores:
+                new_mask = (sensitivity_scores[name] >= s_kappa).float().to(device)
+                mask[name] = new_mask
+                param.data.mul_(new_mask)
+
 
 # Function for Initialization
 def weight_init(m):
@@ -159,12 +187,14 @@ if __name__=="__main__":
     parser.add_argument("--end_iter", default=100, type=int)
     parser.add_argument("--valid_freq", default=1, type=int)
     parser.add_argument("--gpu", default="0", type=str)
+    parser.add_argument("--prune_type", default="snip", type=str, help="lt | snip")
     parser.add_argument("--dataset", default="mnist", type=str, help="mnist | cifar10")
     parser.add_argument("--arch_type", default="fc1", type=str, help="fc1 | lenet5 | alexnet | vgg16 | resnet18 | densenet121")
     parser.add_argument("--prune_percent", default=10, type=int, help="Pruning percent")
+    parser.add_argument("--prune_iterations", default=0, type=int, help="Pruning iterations count")
 
     args = parser.parse_args()
-    wandb.init(project="pruning_project", config={"arch":args.arch_type, "learning_rate": args.lr, "prune_percent":args.prune_percent})
+    wandb.init(project="pruning_project", config={"arch":args.arch_type, "dataset":args.dataset, "learning_rate": args.lr, "prune_percent":args.prune_percent, "end_iter":args.end_iter, "prune_iter": args.prune_iterations, "prune_type": args.prune_type})
 
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
     os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu

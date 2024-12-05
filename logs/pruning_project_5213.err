@@ -1,0 +1,9 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: anamikalochab (anamikalochab-rutgers-university). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.18.7
+wandb: Run data is saved locally in /u/antor/u12/alochab/cs578/Lottery-Ticket-Hypothesis-in-Pytorch/wandb/run-20241121_001541-fasq5bub
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run legendary-wave-71
+wandb: ⭐️ View project at https://wandb.ai/anamikalochab-rutgers-university/pruning_project
+wandb: 🚀 View run at https://wandb.ai/anamikalochab-rutgers-university/pruning_project/runs/fasq5bub
+Training Epochs:   0%|          | 0/500 [00:00<?, ?it/s]Training Epochs:   0%|          | 1/500 [00:28<3:58:28, 28.67s/it]slurmstepd: error: *** JOB 5213 ON mctesla CANCELLED AT 2024-11-21T00:16:33 ***

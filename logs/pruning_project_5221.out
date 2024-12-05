@@ -1,0 +1,294 @@
+
+--- Pruning Level [1:0/20]: ---
+classifier.0.weight  | nonzeros =  235200 /  235200 (100.00%) | total_pruned =       0 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   30000 /   30000 (100.00%) | total_pruned =       0 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =    1000 /    1000 (100.00%) | total_pruned =       0 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 266610, pruned : 0, total: 266610, Compression rate :       1.00x  (  0.00% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:1/20]: ---
+classifier.0.weight  | nonzeros =  208399 /  235200 ( 88.61%) | total_pruned =   26801 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   26580 /   30000 ( 88.60%) | total_pruned =    3420 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     943 /    1000 ( 94.30%) | total_pruned =      57 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 236332, pruned : 30278, total: 266610, Compression rate :       1.13x  ( 11.36% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:2/20]: ---
+classifier.0.weight  | nonzeros =  184720 /  235200 ( 78.54%) | total_pruned =   50480 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   23575 /   30000 ( 78.58%) | total_pruned =    6425 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     890 /    1000 ( 89.00%) | total_pruned =     110 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 209595, pruned : 57015, total: 266610, Compression rate :       1.27x  ( 21.39% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:3/20]: ---
+classifier.0.weight  | nonzeros =  163754 /  235200 ( 69.62%) | total_pruned =   71446 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   20890 /   30000 ( 69.63%) | total_pruned =    9110 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     841 /    1000 ( 84.10%) | total_pruned =     159 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 185895, pruned : 80715, total: 266610, Compression rate :       1.43x  ( 30.27% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:4/20]: ---
+classifier.0.weight  | nonzeros =  145287 /  235200 ( 61.77%) | total_pruned =   89913 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   18520 /   30000 ( 61.73%) | total_pruned =   11480 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     795 /    1000 ( 79.50%) | total_pruned =     205 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 165012, pruned : 101598, total: 266610, Compression rate :       1.62x  ( 38.11% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:5/20]: ---
+classifier.0.weight  | nonzeros =  128878 /  235200 ( 54.80%) | total_pruned =  106322 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   16430 /   30000 ( 54.77%) | total_pruned =   13570 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     750 /    1000 ( 75.00%) | total_pruned =     250 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 146468, pruned : 120142, total: 266610, Compression rate :       1.82x  ( 45.06% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:6/20]: ---
+classifier.0.weight  | nonzeros =  114233 /  235200 ( 48.57%) | total_pruned =  120967 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   14581 /   30000 ( 48.60%) | total_pruned =   15419 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     707 /    1000 ( 70.70%) | total_pruned =     293 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 129931, pruned : 136679, total: 266610, Compression rate :       2.05x  ( 51.27% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:7/20]: ---
+classifier.0.weight  | nonzeros =  101280 /  235200 ( 43.06%) | total_pruned =  133920 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   12927 /   30000 ( 43.09%) | total_pruned =   17073 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     668 /    1000 ( 66.80%) | total_pruned =     332 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 115285, pruned : 151325, total: 266610, Compression rate :       2.31x  ( 56.76% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:8/20]: ---
+classifier.0.weight  | nonzeros =   89878 /  235200 ( 38.21%) | total_pruned =  145322 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   11480 /   30000 ( 38.27%) | total_pruned =   18520 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     630 /    1000 ( 63.00%) | total_pruned =     370 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 102398, pruned : 164212, total: 266610, Compression rate :       2.60x  ( 61.59% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:9/20]: ---
+classifier.0.weight  | nonzeros =   79621 /  235200 ( 33.85%) | total_pruned =  155579 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =   10184 /   30000 ( 33.95%) | total_pruned =   19816 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     595 /    1000 ( 59.50%) | total_pruned =     405 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 90810, pruned : 175800, total: 266610, Compression rate :       2.94x  ( 65.94% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:10/20]: ---
+classifier.0.weight  | nonzeros =   70570 /  235200 ( 30.00%) | total_pruned =  164630 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    9031 /   30000 ( 30.10%) | total_pruned =   20969 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     561 /    1000 ( 56.10%) | total_pruned =     439 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 80572, pruned : 186038, total: 266610, Compression rate :       3.31x  ( 69.78% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:11/20]: ---
+classifier.0.weight  | nonzeros =   62545 /  235200 ( 26.59%) | total_pruned =  172655 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    8000 /   30000 ( 26.67%) | total_pruned =   22000 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     530 /    1000 ( 53.00%) | total_pruned =     470 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 71485, pruned : 195125, total: 266610, Compression rate :       3.73x  ( 73.19% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:12/20]: ---
+classifier.0.weight  | nonzeros =   55440 /  235200 ( 23.57%) | total_pruned =  179760 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    7088 /   30000 ( 23.63%) | total_pruned =   22912 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     500 /    1000 ( 50.00%) | total_pruned =     500 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 63438, pruned : 203172, total: 266610, Compression rate :       4.20x  ( 76.21% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:13/20]: ---
+classifier.0.weight  | nonzeros =   49205 /  235200 ( 20.92%) | total_pruned =  185995 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    6279 /   30000 ( 20.93%) | total_pruned =   23721 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     473 /    1000 ( 47.30%) | total_pruned =     527 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 56367, pruned : 210243, total: 266610, Compression rate :       4.73x  ( 78.86% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:14/20]: ---
+classifier.0.weight  | nonzeros =   43637 /  235200 ( 18.55%) | total_pruned =  191563 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    5564 /   30000 ( 18.55%) | total_pruned =   24436 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     446 /    1000 ( 44.60%) | total_pruned =     554 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 50057, pruned : 216553, total: 266610, Compression rate :       5.33x  ( 81.22% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:15/20]: ---
+classifier.0.weight  | nonzeros =   38735 /  235200 ( 16.47%) | total_pruned =  196465 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    4933 /   30000 ( 16.44%) | total_pruned =   25067 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     420 /    1000 ( 42.00%) | total_pruned =     580 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 44498, pruned : 222112, total: 266610, Compression rate :       5.99x  ( 83.31% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:16/20]: ---
+classifier.0.weight  | nonzeros =   34327 /  235200 ( 14.59%) | total_pruned =  200873 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    4371 /   30000 ( 14.57%) | total_pruned =   25629 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     396 /    1000 ( 39.60%) | total_pruned =     604 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 39504, pruned : 227106, total: 266610, Compression rate :       6.75x  ( 85.18% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:17/20]: ---
+classifier.0.weight  | nonzeros =   30469 /  235200 ( 12.95%) | total_pruned =  204731 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    3876 /   30000 ( 12.92%) | total_pruned =   26124 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     373 /    1000 ( 37.30%) | total_pruned =     627 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 35128, pruned : 231482, total: 266610, Compression rate :       7.59x  ( 86.82% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:18/20]: ---
+classifier.0.weight  | nonzeros =   27000 /  235200 ( 11.48%) | total_pruned =  208200 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    3439 /   30000 ( 11.46%) | total_pruned =   26561 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     351 /    1000 ( 35.10%) | total_pruned =     649 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 31200, pruned : 235410, total: 266610, Compression rate :       8.55x  ( 88.30% pruned)
+classifier.0.weight
+classifier.0.bias
+classifier.2.weight
+classifier.2.bias
+classifier.4.weight
+classifier.4.bias
+
+--- Pruning Level [1:19/20]: ---
+classifier.0.weight  | nonzeros =   23953 /  235200 ( 10.18%) | total_pruned =  211247 | shape = (300, 784)
+classifier.0.bias    | nonzeros =     300 /     300 (100.00%) | total_pruned =       0 | shape = (300,)
+classifier.2.weight  | nonzeros =    3048 /   30000 ( 10.16%) | total_pruned =   26952 | shape = (100, 300)
+classifier.2.bias    | nonzeros =     100 /     100 (100.00%) | total_pruned =       0 | shape = (100,)
+classifier.4.weight  | nonzeros =     331 /    1000 ( 33.10%) | total_pruned =     669 | shape = (10, 100)
+classifier.4.bias    | nonzeros =      10 /      10 (100.00%) | total_pruned =       0 | shape = (10,)
+alive: 27742, pruned : 238868, total: 266610, Compression rate :       9.61x  ( 89.59% pruned)
